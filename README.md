@@ -96,3 +96,8 @@ $ composer require nwidart/laravel-modules
 $ php artisan vendor:publish --provider="Nwidart\Modules\LaravelModulesServiceProvider"
 $ composer dump-autoload
 ```
+
+## Env decrypt
+```
+php artisan env:decrypt --key=3UVsEgGVK36XN82KKeyLFMhvosbZN1aF
+```
