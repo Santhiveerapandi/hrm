@@ -123,3 +123,65 @@ $ composer dump-autoload
 ```
 php artisan env:decrypt --key=3UVsEgGVK36XN82KKeyLFMhvosbZN1aF
 ```
+
+## Deployment
+### Step 1: Code 
+```
+git clone https://github.com/Santhiveerapandi/hrm.git
+cd hrm
+composer install
+php artisan env:decrypt --key=3UVsEgGVK36XN82KKeyLFMhvosbZN1aF
+```
+### Step 2: MYSQL
+```
+CREATE DATABASE hrm;
+CREATE USER 'hrm'@'%' IDENTIFIED BY 'hrm@123';
+GRANT ALL PRIVILEGES ON hrm.* TO 'hrm'@'%';
+FLUSH PRIVILEGES;
+SHOW DATABASES;
+SELECT user, host FROM mysql.user;
+EXIT;
+```
+### Step 3: Establish DB Connection
+```
+php artisan migrate --seed
+npm install
+npm run build
+php artisan serve
+```
+### Step 4: Checking Application
+http://localhost:8000/login
+Login Credential
+Email: test@example.com
+pass:  password
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+### Vapor Enviroment
+Reference: https://docs.vapor.build/introduction.html#what-is-vapor
+
+#### install the vapor cli
+> composer require laravel/vapor-cli --update-with-dependencies
+
+> php vendor/bin/vapor list
+
+> php vendor/bin/vapor help deploy
+
+> php vendor/bin/vapor login
+
+![Login](image.png)
+
+![Access](image-1.png)
+
+> php vendor/bin/vapor team:current
+
+> php vendor/bin/vapor init
+
+Reference: https://youtube.com/playlist?list=PLcjapmjyX17gqhjUz8mgTaWzSv1FPgePD&si=b6BT6U3eYKZEYz2o
+
+#### create lamda function url
+https://us-east-2.console.aws.amazon.com/lambda/home?region=us-east-2#/functions
+
+https://docs.aws.amazon.com/lambda/latest/dg/urls-configuration.html
+
+https://5cnqe3ti34vyb6z6sqp6h535iy0hqldt.lambda-url.us-east-2.on.aws/
